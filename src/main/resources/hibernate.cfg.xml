@@ -10,5 +10,6 @@
     <property name="connection.password"/>
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
+      <!--edit in here-->
   </session-factory>
 </hibernate-configuration>
