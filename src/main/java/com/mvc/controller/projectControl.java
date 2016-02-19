@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by luoyu on 2016/2/9 0009.
  */
 @Controller
-@RequestMapping(value = "/project")
+@RequestMapping(value = "/com/project")
 public class projectControl {
     /**
      * 我想做项目

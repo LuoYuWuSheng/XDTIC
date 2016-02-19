@@ -1,4 +1,4 @@
-package project.comment;
+package com.project.comment;
 
 /**
  * Created by luoyu on 2016/2/10 0010.
