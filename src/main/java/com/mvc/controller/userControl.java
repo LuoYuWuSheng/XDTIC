@@ -40,6 +40,7 @@ public class userControl {
         else {
             HttpSession UserSession = request.getSession();
             //session可以直接把对象放进去？
+            //todo 这里值得去探索，session的具体实现。session是如何知道我的类的，然后对其进行反序列化的
             UserSession.setAttribute("user",member);
             return "result";
         }
