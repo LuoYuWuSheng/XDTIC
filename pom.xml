@@ -55,6 +55,11 @@
             <artifactId>sisu-inject-bean</artifactId>
             <version>2.3.0</version>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.25</version>
+        </dependency>
 
     </dependencies>
 

@@ -1,5 +1,6 @@
 package com.mvc.controller;
 
+import com.mvc.model.TUser;
 import com.user.AbstractUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,6 @@ public class userControl {
     public void setUserFactory(UserFactory userFactory) {
         this.userFactory = userFactory;
     }
-
 
     /**
      * @param request 输入微信用户的标示这里需要做判断，如果是第一次登陆，
@@ -46,13 +46,22 @@ public class userControl {
         }
     }
 
+    //返回用户当前的信息。
     @RequestMapping(value = "/editInfo")
-    public String edit(){
+    public String edit(HttpServletRequest request){
+        AbstractUser  user = (AbstractUser) request.getSession().getAttribute("user");
+        if(user == null)System.out.println("用户失效，没有session，此时待处理");
+        else {
+            user.editInfo();
+        }
         return "edit";
     }
 
+    //用户编辑信息后如何存储？传json然后我解析？
     @RequestMapping(value = "/save")
-    public String save(){
+    public String save(HttpServletRequest request){
+        AbstractUser  user = (AbstractUser) request.getSession().getAttribute("user");
+        user.saveInfo(request);
         return "save";
     }
     //发布服务

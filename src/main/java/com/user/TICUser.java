@@ -1,5 +1,7 @@
 package com.user;
 
+import com.mvc.model.TUser;
+
 /**
  * Created by xd on 2016/2/19.
  * 俱乐部成员
@@ -20,4 +22,8 @@ public class TICUser extends AbstractUser {
     public String email;
     //特长
     public String speciality;
+
+    public TICUser(TUser tUser) {
+        super(tUser);
+    }
 }
