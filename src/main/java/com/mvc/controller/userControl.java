@@ -46,6 +46,20 @@ public class userControl {
         }
     }
 
+    /**
+     * 退出登陆记住状态
+     * @param request 从request session中删除user
+     * @param ewixinSession 从数据库的session绑定中删除该微信标识
+     * @return 返回视图
+     */
+    @RequestMapping(value = "/logout")
+    public String logout(HttpServletRequest request,String ewixinSession){
+        AbstractUser user = (AbstractUser) request.getSession().getAttribute("user");
+        //todo 通过user来删除微信的登陆状态记录
+        request.getSession().removeAttribute("user");
+        return "logout";
+    }
+
     //返回用户当前的信息。
     @RequestMapping(value = "/editInfo")
     public String edit(HttpServletRequest request){
@@ -57,15 +71,20 @@ public class userControl {
         return "edit";
     }
 
-    //用户编辑信息后如何存储？传json然后我解析？
+    /**
+     * 用户编辑信息
+     * @param request 用户传入修改后的值
+     * @return 视图
+     */
     @RequestMapping(value = "/save")
     public String save(HttpServletRequest request){
         AbstractUser  user = (AbstractUser) request.getSession().getAttribute("user");
         user.saveInfo(request);
         return "save";
     }
+
     //发布服务
-    @RequestMapping(value = "/com/distribute")
+    @RequestMapping(value = "/distribute")
     public String distribute(){
         return "distribute";
     }

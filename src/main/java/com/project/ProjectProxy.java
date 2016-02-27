@@ -2,6 +2,7 @@ package com.project;
 
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 /**
@@ -18,4 +19,25 @@ public class ProjectProxy {
     private List<ProjectWait> ProjectWaitList;
     //团队招人列表
     private List<TeamWant> TeamWantList;
+
+    @PostConstruct
+    public void init(){
+        //todo 初始化项目表 读取数据库，
+    }
+
+    public List<TeamWant> getTeamWantList() {
+        return TeamWantList;
+    }
+    public List<ProjectWait> getProjectWaitList() {
+        return ProjectWaitList;
+    }
+    public List<ProjectDone> getProjectDoneList() {
+        return ProjectDoneList;
+    }
+    public boolean addProject(){return true;}
+    public boolean deleteProject(){return true;}
+    //用户通过自己的id来获得自己发布过的我想做列表，团队招人列表，和以完成项目列表
+    public List<ProjectWait> getUserProWaitList(String userid){return ProjectWaitList;}
+    public List<TeamWant> getUserTeamWantList(String userid){return TeamWantList;}
+    public List<ProjectDone> getUserProDoneList(String userid){return ProjectDoneList;}
 }

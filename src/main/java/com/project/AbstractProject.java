@@ -23,8 +23,9 @@ public abstract class AbstractProject {
     public AbstractProject(TUser user) {
 
     }
-
+    //todo 编辑项目
     public boolean edit(){return true;}
+    //todo 保存项目
     public boolean save(){return false;}
 
 }
