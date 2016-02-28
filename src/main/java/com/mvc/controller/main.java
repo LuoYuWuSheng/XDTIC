@@ -12,6 +12,6 @@ public class main {
 
     @RequestMapping
     public String indext() {
-        return "index";
+        return "testProject";
     }
 }

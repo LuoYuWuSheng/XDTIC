@@ -75,7 +75,7 @@ public class projectControl {
      * @param request
      * @return
      */
-    @RequestMapping(value = "comment")
+    @RequestMapping(value = "/comment")
     public String comment(HttpServletRequest request){
         //todo 为代理增加一个评论功能，传入用户项目id
         return "comment";

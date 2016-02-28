@@ -83,9 +83,11 @@ public class userControl {
         return "save";
     }
 
-    //发布服务
+    //想要测试先有数据。从项目的发布来开始。
     @RequestMapping(value = "/distribute")
     public String distribute(){
+        //todo 这里为了调试直接跳过认证，创建了一个用户。
+        userFactory.createUser("1","x");
         return "distribute";
     }
 }
