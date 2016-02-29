@@ -8,6 +8,7 @@
 
     <!-- 设定spring自动扫描的路径-->
     <context:component-scan base-package="com"/>
+    <!--<mvc:resources mapping="./*xml" location="WEB-INF"/>-->
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>

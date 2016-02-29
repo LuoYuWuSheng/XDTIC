@@ -1,6 +1,5 @@
 package com.mvc.controller;
 
-import com.mvc.model.TUser;
 import com.user.AbstractUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
