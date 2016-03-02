@@ -17,6 +17,7 @@ public class TProject {
     private String projectintroduction;
     private Integer userid;
     private Date projectreleasetime;
+    private Byte projectstatue;
 
     @Id
     @Column(name = "projectid")
@@ -134,5 +135,15 @@ public class TProject {
         result = 31 * result + (userid != null ? userid.hashCode() : 0);
         result = 31 * result + (projectreleasetime != null ? projectreleasetime.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "projectstatue")
+    public Byte getProjectstatue() {
+        return projectstatue;
+    }
+
+    public void setProjectstatue(Byte projectstatue) {
+        this.projectstatue = projectstatue;
     }
 }

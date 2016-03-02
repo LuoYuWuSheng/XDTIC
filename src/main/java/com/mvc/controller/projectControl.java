@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by luoyu on 2016/2/9 0009.
  */
 @Controller
-@RequestMapping(value = "/com/project")
+@RequestMapping(value = "/project")
 public class projectControl {
     ProjectProxy projectProxy;
 
@@ -68,6 +68,26 @@ public class projectControl {
     public String teamWantDetail(){
         //todo 通过项目代理获得团队招人详情
         return "teamWantDetail";
+    }
+
+    /**
+     * 项目保存位置
+     * @param request 请求
+     * @return 返回视图
+     */
+    @RequestMapping(value = "/projectSave")
+    public String projectSave(HttpServletRequest request){
+        return "testproject";
+    }
+
+    /**
+     * 团队招人保存位置
+     * @param request 请求
+     * @return 返回视图
+     */
+    @RequestMapping(value = "/teamWantSave")
+    public String teamWantSave(HttpServletRequest request){
+        return "testproject";
     }
 
     /**

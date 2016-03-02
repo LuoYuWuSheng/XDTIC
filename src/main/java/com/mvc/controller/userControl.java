@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
  * Created by luoyu on 2016/2/9 0009.
  */
 @Controller
-@RequestMapping(value = "/com/user")
+@RequestMapping(value = "/user")
 public class userControl {
 
     UserFactory userFactory;
@@ -41,7 +41,8 @@ public class userControl {
             //session可以直接把对象放进去？
             //todo 这里值得去探索，session的具体实现。session是如何知道我的类的，然后对其进行反序列化的
             UserSession.setAttribute("user",member);
-            return "result";
+            //开始进行工程创建测试
+            return "testProject";
         }
     }
 
@@ -85,8 +86,7 @@ public class userControl {
     //想要测试先有数据。从项目的发布来开始。
     @RequestMapping(value = "/distribute")
     public String distribute(){
-        //todo 这里为了调试直接跳过认证，创建了一个用户。
-        userFactory.createUser("1","x");
+
         return "distribute";
     }
 }

@@ -11,8 +11,23 @@
     <title>项目的测试</title>
 </head>
   <body>
-      <table>
-        <caption>头文件，projecttest</caption>
-      </table>
+    <hr>
+        <form action="pro/login" method="get">
+          id: <input type="text" name="id" />
+          password: <input type="text" name="password" />
+          <input type="submit" value="Submit" />
+        </form>
+    <hr>
+        <form action="user/login" method="get">
+            id: <input type="text" name="id" />
+            password: <input type="text" name="password" />
+            <input type="submit" value="Submit" />
+        </form>
+    <hr>
+        <form action="user/login" method="get">
+            id: <input type="text" name="id" />
+            password: <input type="text" name="password" />
+            <input type="submit" value="Submit" />
+        </form>
   </body>
 </html>
