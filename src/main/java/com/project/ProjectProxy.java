@@ -1,9 +1,17 @@
 package com.project;
 
+import Util.hibernateUtil;
+import com.mvc.model.TProject;
+import com.user.AbstractUser;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by xd on 2016/2/23.
@@ -34,7 +42,23 @@ public class ProjectProxy {
     public List<ProjectDone> getProjectDoneList() {
         return ProjectDoneList;
     }
-    public boolean addProject(){return true;}
+    //新建项目
+    public boolean addProject(HttpServletRequest request){
+        AbstractUser user = (AbstractUser) request.getSession().getAttribute("user");
+        //todo 这里写的不是很理想，项目的额保存过程完全暴露给代理了。
+        TProject project = new TProject();
+        project.setUserid(user.getUserinfo().getUserid());
+        project.setProjectid(new Random().nextInt());
+        project.setProjectname(request.getParameter("name"));
+        project.setProjecttoemail(request.getParameter("email"));
+        project.setProjectstatue(new Byte(String.valueOf(request.getParameter("statue"))));
+
+        Session session =hibernateUtil.getSession();
+        Transaction tx = session.beginTransaction();
+        session.save(project);
+        tx.commit();
+        return true;
+    }
     public boolean deleteProject(){return true;}
     //用户通过自己的id来获得自己发布过的我想做列表，团队招人列表，和以完成项目列表
     public List<ProjectWait> getUserProWaitList(String userid){return ProjectWaitList;}

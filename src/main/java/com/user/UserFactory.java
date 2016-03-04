@@ -28,7 +28,7 @@ public class UserFactory {
         Transaction tx = session.beginTransaction();
         TUser tUser = (TUser) session.load(TUser.class,Integer.parseInt(userID));
         tx.commit();
-        System.out.println(tUser.getUsername());
+//        System.out.println(tUser.getUsername());
         //todo 我临时测试写的代码
         //todo 神奇了，为啥我load了tUser却所有的属性域都为null？？？
         if (tUser.getPassword().equals(password)){

@@ -77,7 +77,8 @@ public class projectControl {
      */
     @RequestMapping(value = "/projectSave")
     public String projectSave(HttpServletRequest request){
-        return "testproject";
+        projectProxy.addProject(request);
+        return "testProject";
     }
 
     /**

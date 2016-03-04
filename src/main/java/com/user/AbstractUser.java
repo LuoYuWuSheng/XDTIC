@@ -24,6 +24,10 @@ public abstract class AbstractUser {
     public AbstractUser(TUser userinfo) {
         this.userinfo = userinfo;
     }
+    //获取用户信息
+    public TUser getUserinfo() {
+        return userinfo;
+    }
     //todo 编辑用户信息。
     public boolean editInfo(){
         return true;
