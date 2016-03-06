@@ -5,10 +5,12 @@ package com.user;
  */
 
 import com.mvc.model.TUser;
+import com.project.AbstractProject;
 import com.project.ProjectProxy;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * 用户抽象类
@@ -16,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 public abstract class AbstractUser {
 
     //用户信息表的hibernate实例
-    private TUser userinfo = null;
+    protected TUser userinfo = null;
     /**
      * 抽象类的构造函数
      * @param userinfo 用户信息

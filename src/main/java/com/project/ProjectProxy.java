@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Random;
 
@@ -45,11 +46,18 @@ public class ProjectProxy {
     //新建项目
     public boolean addProject(HttpServletRequest request){
         AbstractUser user = (AbstractUser) request.getSession().getAttribute("user");
+        try {
+            request.setCharacterEncoding("UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         //todo 这里写的不是很理想，项目的额保存过程完全暴露给代理了。
         TProject project = new TProject();
         project.setUserid(user.getUserinfo().getUserid());
         project.setProjectid(new Random().nextInt());
         project.setProjectname(request.getParameter("name"));
+        project.setProjectintroduction(request.getParameter("description"));
+        project.setProjecttopersonname(request.getParameter("ownername"));
         project.setProjecttoemail(request.getParameter("email"));
         project.setProjectstatue(new Byte(String.valueOf(request.getParameter("statue"))));
 

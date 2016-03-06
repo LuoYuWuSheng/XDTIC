@@ -78,7 +78,7 @@ public class projectControl {
     @RequestMapping(value = "/projectSave")
     public String projectSave(HttpServletRequest request){
         projectProxy.addProject(request);
-        return "testProject";
+        return "redirect:/user/distributeList";
     }
 
     /**

@@ -1,13 +1,20 @@
 package com.mvc.controller;
 
+import com.mvc.model.TProject;
+import com.mvc.model.TTeam;
+import com.project.AbstractProject;
+import com.project.ProjectProxy;
 import com.user.AbstractUser;
+import com.user.TICUser;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.user.UserFactory;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by luoyu on 2016/2/9 0009.
@@ -42,7 +49,7 @@ public class userControl {
             //todo 这里值得去探索，session的具体实现。session是如何知道我的类的，然后对其进行反序列化的
             UserSession.setAttribute("user",member);
             //开始进行工程创建测试
-            return "testProject";
+            return "redirect:/user/distributeList";
         }
     }
 
@@ -83,10 +90,24 @@ public class userControl {
         return "save";
     }
 
+    /**
+     * 返回用户发布项目列表
+     * @return
+     */
+    @RequestMapping(value = "/distributeList")
+    public String distributeList(HttpServletRequest request,Model model){
+        TICUser user = (TICUser) request.getSession().getAttribute("user");
+        List<TProject> projectList = user.getProjectList();
+        List<TTeam> teamWantList = user.getTeamWantList();
+        model.addAttribute("projectList",projectList);
+        model.addAttribute("teamWantList",teamWantList);
+        return "userDistributeList";
+    }
+
     //想要测试先有数据。从项目的发布来开始。
     @RequestMapping(value = "/distribute")
     public String distribute(){
 
-        return "distribute";
+        return "testProject";
     }
 }
