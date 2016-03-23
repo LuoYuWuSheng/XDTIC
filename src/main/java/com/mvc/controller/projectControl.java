@@ -49,26 +49,6 @@ public class projectControl {
         return "projectDetail";
     }
 
-    /**
-     * 团队招人入口
-     * @param request 请求
-     * @return 视图
-     */
-    @RequestMapping(value = "/teamWant")
-    public String teamWant(HttpServletRequest request){
-        projectProxy.getTeamWantList();
-        return "teamWant";
-    }
-
-    /**
-     * 团队招人详情
-     * @return 视图
-     */
-    @RequestMapping(value = "/teamWantDetail")
-    public String teamWantDetail(){
-        //todo 通过项目代理获得团队招人详情
-        return "teamWantDetail";
-    }
 
     /**
      * 项目保存位置
@@ -81,15 +61,6 @@ public class projectControl {
         return "redirect:/user/distributeList";
     }
 
-    /**
-     * 团队招人保存位置
-     * @param request 请求
-     * @return 返回视图
-     */
-    @RequestMapping(value = "/teamWantSave")
-    public String teamWantSave(HttpServletRequest request){
-        return "testproject";
-    }
 
     /**
      * 对项目评论

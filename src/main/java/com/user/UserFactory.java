@@ -26,12 +26,13 @@ public class UserFactory {
         //todo 这里需要使用hibernate通过用户的id来获得user类然后再比较密码
         Session session = hibernateUtil.getSession();
         Transaction tx = session.beginTransaction();
-        TUser tUser = (TUser) session.load(TUser.class,Integer.parseInt(userID));
+        TUser tUser = (TUser) session.get(TUser.class,Integer.parseInt(userID));
         tx.commit();
 //        System.out.println(tUser.getUsername());
         //todo 我临时测试写的代码
         //todo 神奇了，为啥我load了tUser却所有的属性域都为null？？？
-        if (tUser.getPassword().equals(password)){
+        if (tUser == null)return null;
+        else if (tUser.getPassword().equals(password)){
             //密码匹配就返回TICUser实例
             TICUser member = new TICUser(tUser,proxy);
             return member;

@@ -22,7 +22,7 @@
           <input type="submit" value="Submit" />
         </form><br>
     <hr>
-        <form action="project/teamWantSave" method="get">
+        <form action="../teamWant/teamWantSave" method="get">
             团队名称: <input type="text" name="name" /><br>
             团队所属项目编号: <input type="text" name="projectid" /><br>
             招募信息: <input type="text" name="teamwantinfo" /><br>

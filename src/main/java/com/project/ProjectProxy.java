@@ -2,9 +2,11 @@ package com.project;
 
 import Util.hibernateUtil;
 import com.mvc.model.TProject;
+import com.mvc.model.TTeam;
 import com.user.AbstractUser;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.id.UUIDGenerationStrategy;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * Created by xd on 2016/2/23.
@@ -64,6 +67,25 @@ public class ProjectProxy {
         Session session =hibernateUtil.getSession();
         Transaction tx = session.beginTransaction();
         session.save(project);
+        tx.commit();
+        return true;
+    }
+
+    public boolean addTeamWant(HttpServletRequest request){
+        AbstractUser user = (AbstractUser) request.getSession().getAttribute("user");
+        TTeam teamWant = new TTeam();
+        //todo uuid 效率问题 目前用自动增长来简单处理
+        //teamWant.setTeamid(UUID.randomUUID());
+        teamWant.setTeamname(request.getParameter("name"));//团队名称
+        //todo 这里有问题吧？哪来的属于团队id这个说法,改成userid，由谁发布的
+        teamWant.setProjectid(user.getUserinfo().getUserid());
+        //自增长的话设置为0就能实现自己增长
+        teamWant.setTeamid(0);
+        teamWant.setWantinfo(request.getParameter("teamwantinfo"));//团队名称
+        teamWant.setIswant(request.getParameter("statue"));//团队名称
+        Session session =hibernateUtil.getSession();
+        Transaction tx = session.beginTransaction();
+        session.save(teamWant);
         tx.commit();
         return true;
     }

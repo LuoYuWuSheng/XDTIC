@@ -16,6 +16,10 @@ public class TTeam {
     private String wantinfo;
     private String iswant;
 
+    public void setTeamid(int teamid) {
+        this.teamid = teamid;
+    }
+
     @Id
     @Column(name = "teamid")
     public Integer getTeamid() {
