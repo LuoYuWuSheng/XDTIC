@@ -11,6 +11,9 @@
     <title></title>
   </head>
   <body>
-      配置成功
+      <a href="./project/done" />已有项目</a><br><hr>
+      <a href="./project/waitToDo" />我想做</a><br><hr>
+      <a href="./teamWant/List" />团队招人</a><br><hr>
+      <a href="./user/loginPage" />用户登录</a><br><hr>
   </body>
 </html>

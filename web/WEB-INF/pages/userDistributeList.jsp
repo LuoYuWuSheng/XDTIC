@@ -12,6 +12,7 @@
     <title>用户发布列表</title>
 </head>
   <body>
+  <capital>我发布的项目列表</capital>
   <table border="1">
     <jstl:forEach items="${projectList}" var="item">
       <tr>
@@ -22,7 +23,18 @@
       </tr>
     </jstl:forEach>
   </table>
-
+  <br><hr>
+  <capital>我发布的项目列表</capital>
+  <table border="1">
+    <jstl:forEach items="${teamWantList}" var="teamwant">
+      <tr>
+        <td>团队标题: ${teamwant.teamname}</td>
+        <td>招人信息: ${teamwant.wantinfo}</td>
+        <td>队长姓名: ${teamwant.username}</td>
+        <td>发布时间: ${teamwant.createtime}</td>
+      </tr>
+    </jstl:forEach>
+  </table>
   <br><hr>
   <button onclick="location='../user/distribute'">发布项目</button>
   <%--<button onclick="location='/user/distribute'">发布项目</button>--%>

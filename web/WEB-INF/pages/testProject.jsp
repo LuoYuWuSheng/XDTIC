@@ -26,14 +26,10 @@
             团队名称: <input type="text" name="name" /><br>
             团队所属项目编号: <input type="text" name="projectid" /><br>
             招募信息: <input type="text" name="teamwantinfo" /><br>
+            团队成员: <input type="text" name="teammember" /><br>
             是否招募:  是-<input type="radio" value="1" name="statue" /> 否—<input type="radio" value="0" name="statue">
             <input type="submit" value="Submit" />
         </form><br>
     <hr>
-        <form action="user/login" method="get">
-            id: <input type="text" name="id" />
-            password: <input type="text" name="password" />
-            <input type="submit" value="Submit" />
-        </form>
   </body>
 </html>

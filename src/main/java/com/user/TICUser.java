@@ -40,6 +40,11 @@ public class TICUser extends AbstractUser {
 
     public List<TTeam> getTeamWantList() {
         List<TTeam> teamWantList = null;
+        Session session  = hibernateUtil.getSession();
+        Transaction tx = session.beginTransaction();
+        String hql = "from TTeam as team WHERE team.userid = "+userinfo.getUserid()+"";
+        Query query = session.createQuery(hql);
+        teamWantList = query.list();
         return teamWantList;
     }
 }

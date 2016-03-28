@@ -28,7 +28,10 @@ public class userControl {
     public void setUserFactory(UserFactory userFactory) {
         this.userFactory = userFactory;
     }
-
+    @RequestMapping(value = "/loginPage")
+    public String loginPage(){
+        return "login";
+    }
     /**
      * @param request 输入微信用户的标示这里需要做判断，如果是第一次登陆，
      *                需要输入用户名称和密码，如果是持续登陆，则需要传入微信的标示，查数据库看是否记住登陆。

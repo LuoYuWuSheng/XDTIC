@@ -1,13 +1,15 @@
 package com.mvc.controller;
 
+import com.mvc.model.TProject;
 import com.project.ProjectProxy;
 import com.user.AbstractUser;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by luoyu on 2016/2/9 0009.
@@ -27,10 +29,11 @@ public class projectControl {
      * @return 返回测试的视图，json定义好后返回json给前端
      */
     @RequestMapping(value = "/waitToDo")
-    public String waitToDo(HttpServletRequest request) {
+    public String waitToDo(HttpServletRequest request,Model model) {
         AbstractUser user = (AbstractUser) request.getSession().getAttribute("user");
-        projectProxy.getProjectWaitList();
-        return "index";
+        List<TProject> waitList = projectProxy.getProjectWaitList();
+        model.addAttribute("list",waitList);
+        return "projectWaitList";
     }
 
     /**
@@ -38,9 +41,10 @@ public class projectControl {
      * @return 返回视图，等json定义好后返回json给前端
      */
     @RequestMapping(value = "/done")
-    public String done(HttpServletRequest request){
-        projectProxy.getProjectDoneList();
-        return "projectDone";
+    public String done(HttpServletRequest request,Model model){
+        List<TProject> doneList = projectProxy.getProjectDoneList();
+        model.addAttribute("list",doneList);
+        return "projectDoneList";
     }
 
     @RequestMapping(value = "/projectDetail")

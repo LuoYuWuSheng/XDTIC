@@ -36,6 +36,6 @@ public class main {
 //        tx.commit();
 //        session.close();
 
-        return "login";
+        return "index";
     }
 }

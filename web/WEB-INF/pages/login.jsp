@@ -11,7 +11,7 @@
     <title>用户登录</title>
 </head>
   <body>
-      <form action="user/login" method="get">
+      <form action="../user/login" method="get">
         id: <input type="text" name="id" />
         password: <input type="text" name="password" />
         <input type="submit" value="Submit" />
