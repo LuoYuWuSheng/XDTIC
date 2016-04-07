@@ -37,7 +37,7 @@
   </table>
   <br><hr>
   <button onclick="location='../user/distribute'">发布项目</button>
-  <%--<button onclick="location='/user/distribute'">发布项目</button>--%>
+  <button onclick="location='../user//editInfo'">编辑个人信息</button>
   <%--<button onclick="location='/user/distribute'">发布项目</button>--%>
   </body>
 </html>

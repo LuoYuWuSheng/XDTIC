@@ -72,7 +72,18 @@ public class userControl {
 
     //返回用户当前的信息。
     @RequestMapping(value = "/editInfo")
-    public String edit(HttpServletRequest request){
+    public String edit(HttpServletRequest request,Model model){
+        AbstractUser  user = (AbstractUser) request.getSession().getAttribute("user");
+        if(user == null)System.out.println("用户失效，没有session，此时待处理");
+        else {
+            model.addAttribute("Tuser",user.getUserinfo());
+            //user.editInfo();
+        }
+        return "personal";
+    }
+    //更新用户信息
+    @RequestMapping(value = "/updateInfo")
+    public String update(HttpServletRequest request){
         AbstractUser  user = (AbstractUser) request.getSession().getAttribute("user");
         if(user == null)System.out.println("用户失效，没有session，此时待处理");
         else {
